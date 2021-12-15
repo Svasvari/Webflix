@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import requests from '../Requests'
 
 import Row from './Row'
+import Banner from './Banner'
 
 
 export const Home = props => {
@@ -10,11 +11,10 @@ export const Home = props => {
 
   return (
     <div className='main'>
-      <h3>Watch It Again</h3>
-      <Row title='Trending Today' fetchUrl={requests.fetchTrending} />
-      <Row title='Webflix Originals' fetchUrl={requests.fetchOriginals} />
-      <h3>Top 10 Movies Today</h3>
-      <h3>Popular on Webflix</h3>
+      <Banner fetchUrl={requests.fetchOriginals} />
+      <Row title='Webflix Originals' fetchUrl={requests.fetchOriginals} isCover={false} />
+      <Row title='Trending Today' fetchUrl={requests.fetchTrending} isCover={false} />
+      <Row title='Top Rated' fetchUrl={requests.fetchTopRatedMovies} isCover={false} />
     </div>
   )
 }

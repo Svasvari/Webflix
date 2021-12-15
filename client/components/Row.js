@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from '../Axios'
 
-const Row = ({ title, fetchUrl }) => {
+const Row = ({ title, fetchUrl, isCover }) => {
 
     const baseImageUrl = 'https://image.tmdb.org/t/p/original/'
 
@@ -54,24 +54,24 @@ const Row = ({ title, fetchUrl }) => {
 
     return (
         <div className='row'>
-            <h2 className='row-title'>{title}</h2>
-            <div className='wrapper'>
-                    <section id='section1'>
-                        <a href="#section3" className="arrow__btn">‹</a>
+            <h2 className={`row-title ${isCover && 'row-title-large'}`}>{title}</h2>
+            <div className={`wrapper ${isCover && 'wrapper-large'}`}>
+                    <section className={`${isCover && 'section-large'}`} id='section1'>
+                        <a className='row-a' href="#section3" className="arrow__btn">‹</a>
                         {videosOne.map(video => {
                             if (video.id === shownId) {
                                 return (
                                     <div key={video.id} className='row-modal' onMouseLeave={() => handleStopHover()}>
-                                        <img className='row-modal-image' src={baseImageUrl + video.backdrop_path} alt={video.name} />
+                                        <img className='row-modal-image' src={`${baseImageUrl}${video.backdrop_path}`} alt={video.name} />
                                     </div>
                                 )
                             } else {
                                 return (
-                                    <img className='row-image' key={video.id} src={baseImageUrl + video.backdrop_path} alt={video.name} onMouseEnter={() => handleHover(video.id)} onMouseLeave={() => setIsShown(false)} />
+                                    <img className={`row-image ${isCover && 'row-image-cover'}`} key={video.id} src={`${baseImageUrl}${isCover ? video.poster_path : video.backdrop_path}`} alt={video.name} onMouseEnter={() => handleHover(video.id)} onMouseLeave={() => setIsShown(false)} />
                                 )
                             }
                         })}
-                        <a href="#section2" className='arrow__btn'>›</a>
+                        <a className='row-a' href="#section2" className='arrow__btn'>›</a>
                     </section>
 
                 <section id='section2'>
@@ -85,7 +85,7 @@ const Row = ({ title, fetchUrl }) => {
                             )
                         } else {
                             return (
-                                <img className='row-image' key={video.id} src={baseImageUrl + video.backdrop_path} alt={video.name} onMouseEnter={() => handleHover(video.id)} onMouseLeave={() => setIsShown(false)} />
+                                <img className={`row-image ${isCover && 'row-image-cover'}`} key={video.id} src={`${baseImageUrl}${isCover ? video.poster_path : video.backdrop_path}`} onMouseEnter={() => handleHover(video.id)} onMouseLeave={() => setIsShown(false)} />
                             )
                         }
                     })}
@@ -103,7 +103,7 @@ const Row = ({ title, fetchUrl }) => {
                             )
                         } else {
                             return (
-                                <img className='row-image' key={video.id} src={baseImageUrl + video.backdrop_path} alt={video.name} onMouseEnter={() => handleHover(video.id)} onMouseLeave={() => setIsShown(false)} />
+                                <img className={`row-image ${isCover && 'row-image-cover'}`} key={video.id} src={`${baseImageUrl}${isCover ? video.poster_path : video.backdrop_path}`} alt={video.name} onMouseEnter={() => handleHover(video.id)} onMouseLeave={() => setIsShown(false)} />
                             )
                         }
                     })}
