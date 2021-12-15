@@ -216,6 +216,7 @@ section {
   grid-template-columns: repeat(5, auto);
   margin: 20px 0;
   align-items: center;
+  /* scroll-margin-top: 50vh; */
 }
 
 .section-large {

@@ -6,6 +6,7 @@ import Home from './components/Home';
 import {me} from './store'
 import { Landing } from './components/Landing';
 import SingleVideo from './components/SingleVideo';
+import Movies from './components/Movies';
 
 
 /**
@@ -24,6 +25,7 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route path="/home" component={Home} />
+            <Route path="/browse/movies" component={Movies} />
             <Route path="/watch:param" component={SingleVideo} />
             <Redirect to="/home" />
           </Switch>

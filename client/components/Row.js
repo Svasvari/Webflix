@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from '../Axios'
 import { Link, Redirect } from 'react-router-dom'
-import { stripBasename } from 'history/PathUtils'
-import { redirect } from 'react-router-dom'
 
 const Row = ({ title, fetchUrl, isCover, rowPosition, bg }) => {
 
@@ -24,7 +22,13 @@ const Row = ({ title, fetchUrl, isCover, rowPosition, bg }) => {
     useEffect(() => {
         async function fetchVideos() {
             const res = await axios.get(fetchUrl)
-            setVideos(res.data.results)
+
+            const filteredRes = res.data.results.filter(video => {
+                if(video.backdrop_path !== null) {
+                    return video
+                }
+            })
+            setVideos(filteredRes)
 
             const videosOne = videos.filter(video => videos.indexOf(video) < 7)
             setVideosOne(videosOne)
@@ -69,14 +73,12 @@ const Row = ({ title, fetchUrl, isCover, rowPosition, bg }) => {
         return <Redirect to={{ pathname: `/watch?video=${id}`, state: { videoName: name } }} />
     }
 
-    
-
     return (
         <div className='row'>
             <h2 className={`row-title ${isCover && 'row-title-large'}`}>{title}</h2>
             <div className={`wrapper ${isCover && 'wrapper-large'}`}>
-                <section className={`${isCover && 'section-large'}`} id={`${rowPosition}section1`}>
-                    <a className='row-a' href={`#${rowPosition}section3`} className="arrow__btn">‹</a>
+                <section className={`${isCover && 'section-large'}`} id={`${rowPosition}section1`} >
+                    <a onClick={() => handleScroll()} className='row-a' href={`#${rowPosition}section3`} className="arrow__btn">‹</a>
                     {videosOne.map(video => {
                         console.log(video)
                         if (video.id === shownId) {
