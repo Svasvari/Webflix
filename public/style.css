@@ -1,0 +1,132 @@
+.action-footer {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #141414;
+}
+
+a {
+  text-decoration: none;
+}
+
+label {
+  display: block;
+}
+
+nav a {
+  display: inline-block;
+  margin: 1em;
+}
+
+form div {
+  margin: 1em;
+  display: inline-block;
+}
+
+h2 {
+  color: whitesmoke
+}
+
+.mainn {
+  background-color: #141414;
+}
+
+.row {
+
+}
+
+.row-images {
+  display: flex;
+  padding: 20px;
+}
+
+.row-image {
+  width: 400px;
+  height: 100%;
+  object-fit: contain;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  transition: transform 450ms;
+}
+
+.row-image:hover {
+  transform: scale(1.08)
+}
+
+.row-modal {
+  min-width: 400px;
+  max-height: 250px;
+  object-fit: contain;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  transition: transform 450ms;
+  background-color: #141414;
+  overflow: hidden;
+}
+
+.row-modal-image {
+  min-width: 400px;
+  max-height: 150px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: transform 450ms;
+  overflow: hidden;
+  object-fit:cover;
+}
+
+.row-modal:hover {
+  transform: scale(1.50);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.wrapper {
+  display: flex;
+  grid-template-columns: repeat(3,100%);
+  scroll-behavior: smooth;
+  height: 350px;
+  align-items: center;
+  overflow: hidden
+}
+
+section {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  grid-template-columns: repeat(5, auto);
+  margin: 20px 0;
+}
+    
+
+.row-title {
+  font-size: 30pt;
+  margin-bottom: -2%;
+}
+    
+      
+a:nth-of-type(1) {
+        top:0; bottom:0; left:0;
+        background: linear-gradient(-90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+}
+a:nth-of-type(2) {
+        top:0; bottom:0; right: 0;
+        background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+}
+      
+.arrow__btn {
+  display: flex;
+        position: absolute;
+        color: #fff;
+        text-decoration: none;
+        font-size: 6em;
+        background:rgb(0,0,0);
+        width: 80px;
+        padding: 20px;
+        text-align: center;
+        z-index: 1;
+        align-items: center;
+}
