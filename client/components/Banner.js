@@ -11,7 +11,6 @@ const Banner = ({ fetchUrl }) => {
         async function fetchVideos() {
             const res = await axios.get(fetchUrl)
             const selection = [res.data.results[Math.floor(Math.random() * res.data.results.length)]]
-            console.log(selection)
             setCurrentBanner(selection)
 
             return res
@@ -27,7 +26,7 @@ const Banner = ({ fetchUrl }) => {
         <header className='banner' style={{ backgroundImage: `url(${baseImageUrl}${currentBanner[0]?.backdrop_path})` }}>
             <div className='banner-info'>
                 <h1 className='banner-title'>
-                    {currentBanner[0]?.name || currentBanner[0]?.original_name}
+                    {currentBanner[0]?.name || currentBanner[0]?.original_name || currentBanner[0]?.title || currentBanner[0]?.original_title}
                 </h1>
                 <div>
                     <button className='banner-button-play'>Play</button>
