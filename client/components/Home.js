@@ -12,9 +12,9 @@ export const Home = props => {
   return (
     <div className='main'>
       <Banner fetchUrl={requests.fetchOriginals} />
-      <Row title='Webflix Originals' fetchUrl={requests.fetchOriginals} isCover={false} />
-      <Row title='Trending Today' fetchUrl={requests.fetchTrending} isCover={false} />
-      <Row title='Top Rated' fetchUrl={requests.fetchTopRatedMovies} isCover={false} />
+      <Row title='Webflix Originals' fetchUrl={requests.fetchOriginals} isCover={false} rowPosition={'1'}/>
+      <Row title='Trending Today' fetchUrl={requests.fetchTrending} isCover={false} rowPosition={'2'}/>
+      <Row title='Top Rated' fetchUrl={requests.fetchTopRatedMovies} isCover={false} rowPosition={'3'}/>
     </div>
   )
 }

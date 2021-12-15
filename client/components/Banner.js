@@ -30,7 +30,7 @@ const Banner = ({ fetchUrl }) => {
                     {currentBanner[0]?.name || currentBanner[0]?.original_name}
                 </h1>
                 <div>
-                    <button className='banner-button'>Play</button>
+                    <button className='banner-button-play'>Play</button>
                     <button className='banner-button'>More Info</button>
                 </div>
                 <h1 className='banner-desc'>

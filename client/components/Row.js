@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from '../Axios'
 
-const Row = ({ title, fetchUrl, isCover }) => {
+const Row = ({ title, fetchUrl, isCover, rowPosition }) => {
 
     const baseImageUrl = 'https://image.tmdb.org/t/p/original/'
 
@@ -56,8 +56,8 @@ const Row = ({ title, fetchUrl, isCover }) => {
         <div className='row'>
             <h2 className={`row-title ${isCover && 'row-title-large'}`}>{title}</h2>
             <div className={`wrapper ${isCover && 'wrapper-large'}`}>
-                    <section className={`${isCover && 'section-large'}`} id='section1'>
-                        <a className='row-a' href="#section3" className="arrow__btn">‹</a>
+                    <section className={`${isCover && 'section-large'}`} id={`${rowPosition}section1`}>
+                        <a className='row-a' href={`#${rowPosition}section3`} className="arrow__btn">‹</a>
                         {videosOne.map(video => {
                             if (video.id === shownId) {
                                 return (
@@ -71,11 +71,11 @@ const Row = ({ title, fetchUrl, isCover }) => {
                                 )
                             }
                         })}
-                        <a className='row-a' href="#section2" className='arrow__btn'>›</a>
+                        <a className='row-a' href={`#${rowPosition}section2`} className='arrow__btn'>›</a>
                     </section>
 
-                <section id='section2'>
-                    <a href="#section1" className="arrow__btn">‹</a>
+                <section id={`${rowPosition}section2`}>
+                    <a href={`#${rowPosition}section1`} className="arrow__btn">‹</a>
                     {videosTwo.map(video => {
                         if (video.id === shownId) {
                             return (
@@ -89,11 +89,11 @@ const Row = ({ title, fetchUrl, isCover }) => {
                             )
                         }
                     })}
-                    <a href="#section3" className='arrow__btn'>›</a>
+                    <a href={`#${rowPosition}section3`} className='arrow__btn'>›</a>
                 </section>
 
-                <section id='section3'>
-                    <a href="#section2" className="arrow__btn">‹</a>
+                <section id={`${rowPosition}section3`}>
+                    <a href={`#${rowPosition}section2`} className="arrow__btn">‹</a>
                     {videosThree.map(video => {
                         if (video.id === shownId) {
                             return (
@@ -107,7 +107,7 @@ const Row = ({ title, fetchUrl, isCover }) => {
                             )
                         }
                     })}
-                    <a href="#section1" className='arrow__btn'>›</a>
+                    <a href={`#${rowPosition}section1`} className='arrow__btn'>›</a>
                 </section>
             </div>
         </div>
