@@ -24,7 +24,7 @@ const Row = ({ title, fetchUrl, isCover, rowPosition, bg }) => {
             const res = await axios.get(fetchUrl)
 
             const filteredRes = res.data.results.filter(video => {
-                if(video.backdrop_path !== null) {
+                if (video.backdrop_path !== null) {
                     return video
                 }
             })
@@ -132,9 +132,11 @@ const Row = ({ title, fetchUrl, isCover, rowPosition, bg }) => {
                                         className='modal-header'
                                         style={{ backgroundImage: `url(${baseImageUrl}${video?.backdrop_path})` }}
                                     >
-                                        <h1 className='modal-title'>
-                                            {video?.title || video?.original_title || video?.name || video?.original_name}
-                                        </h1>
+                                        <div className='title-container'>
+                                            <h1 className='modal-title'>
+                                                {video?.title || video?.original_title || video?.name || video?.original_name}
+                                            </h1>
+                                        </div>
                                     </header>
                                 </div>
                             )
@@ -169,9 +171,11 @@ const Row = ({ title, fetchUrl, isCover, rowPosition, bg }) => {
                                         className='modal-header'
                                         style={{ backgroundImage: `url(${baseImageUrl}${video?.backdrop_path})` }}
                                     >
-                                        <h1 className='modal-title'>
-                                            {video?.title || video?.original_title || video?.name || video?.original_name}
-                                        </h1>
+                                        <div className='title-container'>
+                                            <h1 className='modal-title'>
+                                                {video?.title || video?.original_title || video?.name || video?.original_name}
+                                            </h1>
+                                        </div>
                                     </header>
                                 </div>
                             )

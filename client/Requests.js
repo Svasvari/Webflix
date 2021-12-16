@@ -6,6 +6,7 @@ const requests = {
 
     // TV Shows 
     fetchOriginals: `/discover/tv?api_key=${API_KEY}`,
+    fetchTrendingTv: `/trending/tv/day?api_key=${API_KEY}`,
     fetchTopRatedTv: `/tv/top_rated?api_key=${API_KEY}`,
 
     // Movies

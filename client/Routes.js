@@ -7,6 +7,7 @@ import {me} from './store'
 import { Landing } from './components/Landing';
 import SingleVideo from './components/SingleVideo';
 import Movies from './components/Movies';
+import TvShows from './components/TvShows';
 
 
 /**
@@ -26,6 +27,7 @@ class Routes extends Component {
           <Switch>
             <Route path="/home" component={Home} />
             <Route path="/browse/movies" component={Movies} />
+            <Route path="/browse/tvShows" component={TvShows} />
             <Route path="/watch:param" component={SingleVideo} />
             <Redirect to="/home" />
           </Switch>
