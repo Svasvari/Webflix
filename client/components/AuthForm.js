@@ -1,32 +1,38 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {authenticate} from '../store'
+import { connect } from 'react-redux'
+import { authenticate } from '../store'
+import { Link } from 'react-router-dom'
 
 /**
  * COMPONENT
  */
 const AuthForm = props => {
-  const {name, displayName, handleSubmit, error} = props
+  const { name, displayName, handleSubmit, error } = props
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
+    <div className='login'>
+      <form onSubmit={handleSubmit} name={name} className='login-form'>
+        <h1 className='login-title'>{name === 'signup' ? 'Sign Up' : 'Sign In'}</h1>
         <div>
           <label htmlFor="username">
-            <small>Username</small>
+            {/* <small>Username</small> */}
           </label>
-          <input name="username" type="text" />
+          <input className='input' name="username" type="text" placeholder='Username' />
         </div>
         <div>
           <label htmlFor="password">
-            <small>Password</small>
+            {/* <small>Password</small> */}
           </label>
-          <input name="password" type="password" />
+          <input className='input' name="password" type="password" placeholder='Password' />
         </div>
         <div>
-          <button type="submit">{displayName}</button>
+          <button type="submit" className='login-button'>{displayName}</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
+        <div className='signup-now'>
+          <Link to={`/${name === 'signup' ? 'login' : 'signup'}`}>{name === 'signup' ? 'Already a Member? Sign In' : 'Sign Up Now'}</Link>
+        </div>
+
       </form>
     </div>
   )

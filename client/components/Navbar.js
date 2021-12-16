@@ -18,26 +18,30 @@ const Navbar = ({ handleClick, isLoggedIn }) => {
     return () => {
       window.removeEventListener('scroll')
     }
-}, []);
+  }, []);
 
   return (
     <div className={`navbar ${visible && 'navbar-solid'}`}>
       <h1 className='logo'>WEBFLIX</h1>
       <nav>
         {isLoggedIn ? (
-          <div>
-            {/* The navbar will show these links after you log in */}
-            <Link className='nav-a' to="/home">Home</Link>
-            <Link className='nav-a' to="/home">TV Shows</Link>
-            <Link className='nav-a' to="/browse/movies">Movies</Link>
-            <a className='nav-a' href="#" onClick={handleClick}>
-              Logout
-            </a>
+          <div className='nav-inner-container'>
+            <div>
+              {/* The navbar will show these links after you log in */}
+              <Link className='nav-a' to="/home">Home</Link>
+              <Link className='nav-a' to="/home">TV Shows</Link>
+              <Link className='nav-a' to="/browse/movies">Movies</Link>
+            </div>
+            <div>
+              <a className='nav-a' href="#" onClick={handleClick}>
+                Logout
+              </a>
+            </div>
           </div>
         ) : (
-          <div>
-            {/* The navbar will show these links before you log in */}
-            <Link className='nav-a' to="/login">Login</Link>
+          <div className='nav-inner-container'>
+            <div ></div>
+            <Link className='login-button-nav nav-a' to="/login">Sign In</Link>
           </div>
         )}
       </nav>
