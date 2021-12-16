@@ -9,8 +9,8 @@ const Row = ({ title, fetchUrl, isCover, rowPosition, bg }) => {
     const [videos, setVideos] = useState([])
 
     const [redirect, setRedirect] = useState(false)
-    const [name, setName] = useState(null)
     const [id, setId] = useState(0)
+    const [video, setVideo] = useState({})
 
     const [isShown, setIsShown] = useState(false);
     const [shownId, setShownId] = useState(-1);
@@ -63,14 +63,15 @@ const Row = ({ title, fetchUrl, isCover, rowPosition, bg }) => {
         setIsShown(false)
     }
 
-    function handleOnClick(name, id) {
+    function handleOnClick(video) {
         setRedirect(true)
-        setName(name)
-        setId(id)
+        setId(video.id)
+        console.log(video)
+        setVideo(video)
     }
 
     if (redirect) {
-        return <Redirect to={{ pathname: `/watch?video=${id}`, state: { videoName: name } }} />
+        return <Redirect to={{ pathname: `/watch?video=${id}`, state: { video: video } }} />
     }
 
     return (
@@ -80,14 +81,13 @@ const Row = ({ title, fetchUrl, isCover, rowPosition, bg }) => {
                 <section className={`${isCover && 'section-large'}`} id={`${rowPosition}section1`} >
                     <a onClick={() => handleScroll()} className='row-a' href={`#${rowPosition}section3`} className="arrow__btn">‹</a>
                     {videosOne.map(video => {
-                        console.log(video)
                         if (video.id === shownId) {
                             return (
                                 <div
                                     key={video.id}
                                     className={videosOne.indexOf(video) === 0 ? 'row-modal-end' : 'row-modal'}
                                     onMouseLeave={() => handleStopHover()}
-                                    onClick={() => handleOnClick(video?.title || video?.original_title || video?.name || video?.original_name, video.id)}
+                                    onClick={() => handleOnClick(video)}
                                 >
                                     <header
                                         className='modal-header'
@@ -126,7 +126,7 @@ const Row = ({ title, fetchUrl, isCover, rowPosition, bg }) => {
                                     key={video.id}
                                     className={videosTwo.indexOf(video) === 0 ? 'row-modal-end' : 'row-modal'}
                                     onMouseLeave={() => handleStopHover()}
-                                    onClick={() => handleOnClick(video?.title || video?.original_title || video?.name || video?.original_name, video.id)}
+                                    onClick={() => handleOnClick(video)}
                                 >
                                     <header
                                         className='modal-header'
@@ -165,7 +165,7 @@ const Row = ({ title, fetchUrl, isCover, rowPosition, bg }) => {
                                     key={video.id}
                                     className={videosThree.indexOf(video) === 0 ? 'row-modal-end' : 'row-modal'}
                                     onMouseLeave={() => handleStopHover()}
-                                    onClick={() => handleOnClick(video?.title || video?.original_title || video?.name || video?.original_name, video.id)}
+                                    onClick={() => handleOnClick(video)}
                                 >
                                     <header
                                         className='modal-header'
